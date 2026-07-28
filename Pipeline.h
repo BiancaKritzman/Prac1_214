@@ -17,6 +17,9 @@ class Pipeline {
         RunCheckpoint* createCheckpoint();
         void restore(RunCheckpoint*);
         virtual ~Pipeline();
+        //memento functions
+        RunCheckpoint* createCheckpoint();
+        void restore(RunCheckpoint*);
     protected:
         void connect();
         virtual void extract() = 0;
