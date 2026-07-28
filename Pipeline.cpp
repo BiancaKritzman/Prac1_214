@@ -87,7 +87,7 @@ void StreamingPipeline::extract() {
 
 void StreamingPipeline::load() {
     
-    std::cout << "Streaming load: " << reconrds.size() << "records streamed \n" << std::endl;
+    std::cout << "Streaming load: " << records.size() << "records streamed \n" << std::endl;
 
     stage = 4;
 }
@@ -97,7 +97,7 @@ RunCheckpoint* StreamingPipeline::createCheckpoint(){
     RunCheckpoint* checkpoint = new RunCheckpoint(stage, records);
     return checkpoint;
 }
-void StreamingPipeline::restore(RunCheckpoint* checkpoint){
-    stage = checkpoint->getStage();
-    records = checkpoint->getRecords();
+void StreamingPipeline::restore(RunCheckpoint* cp){
+    stage = cp->getStage();
+    records = cp->getRecords();
 }
