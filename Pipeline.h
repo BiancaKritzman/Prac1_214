@@ -30,5 +30,17 @@ class Pipeline {
 
 };
 
+class BatchPipeline : public Pipeline {
+    protected:
+        void extract() override;
+        void load() override;
+};
+
+class StreamingPipeline : public Pipeline {
+    protected:
+        void extract() override;
+        void load() override;
+};
+
 
 #endif // PIPELINE_H

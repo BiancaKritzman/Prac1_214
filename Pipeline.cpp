@@ -49,3 +49,45 @@ PipeLine::~Pipeline() {
     delete steps;
 }
 
+void BatchPipeline::extract(){
+    
+    Connector* connector = records->extract();
+
+
+    std::cout << "Batch extract: " << records.size() << "records \n" << std::endl;
+
+    stage = 2;
+
+    //clean up (delete)
+    delete connector;
+
+}
+
+void BatchPipeline::load() {
+
+    std::cout << "Batch load: " << records.size() << "records written \n" << std::endl;
+
+    stage = 4;
+
+}
+
+void StreamingPipeline::extract() {
+
+    Connector* connector = records->extract();
+
+
+    std::cout << "Streaming extract: " << records.size() << "records \n" << std::endl;
+
+    stage = 2;
+
+    //clean up (delete)
+    delete connector;
+}
+
+
+void StreamingPipeline::load() {
+    
+    std::cout << "Streaming load: " << reconrds.size() << "records streamed \n" << std::endl;
+
+    stage = 4;
+}
