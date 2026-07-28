@@ -91,3 +91,13 @@ void StreamingPipeline::load() {
 
     stage = 4;
 }
+
+//memento
+RunCheckpoint* StreamingPipeline::createCheckpoint(){
+    RunCheckpoint* checkpoint = new RunCheckpoint(stage, records);
+    return checkpoint;
+}
+void StreamingPipeline::restore(RunCheckpoint* checkpoint){
+    stage = checkpoint->getStage();
+    records = checkpoint->getRecords();
+}
