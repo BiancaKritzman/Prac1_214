@@ -29,7 +29,7 @@ Transformation* DeduplicateStep::clone() {
   return new DeduplicateStep(*this);
 }
 
-std::vector<std::string> AggregateByRegionStep::apply(std::vector<std::string> records) { //correct?
+std::vector<std::string> AggregateByRegionStep::apply(std::vector<std::string> records) { 
 
   std::vector<std::string> aggRecords;
   
