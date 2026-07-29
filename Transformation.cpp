@@ -30,8 +30,12 @@ Transformation* DeduplicateStep::clone() {
 }
 
 std::vector<std::string> AggregateByRegionStep::apply(std::vector<std::string> records) { //correct?
+
+  std::vector<std::string> aggRecords;
   
-  std::string element = "COUNT=" + records.size();
+  aggRecords.push_back("COUNT=" + records.size());
+
+  return aggRecords;
 }
 
 Transformation* AggregateByRegionStep::clone() {

@@ -5,7 +5,7 @@
 Pipeline::Pipeline(ConnectorFactory* factory) : factory(factory), stage(0) {};
 
 void Pipeline::addStep(Transformation* t) {
-    steps.push_back(t);
+    steps.push_back(t); 
 }
 
 void Pipeline::run() {
@@ -30,7 +30,7 @@ void Pipeline::connect() {
 void Pipeline::transform() {
 
     for(int i = 0; i < records.size(); i++) {
-        records[i] = steps[i];
+        records[i] = steps[i]->apply(records);
     }
 
     stage = 3;

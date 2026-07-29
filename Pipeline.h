@@ -12,7 +12,6 @@ class RunCheckpoint;
 class Pipeline {
 
     public:
-        friend class Transformation;
         Pipeline(ConnectorFactory*);
         void run();
         void addStep(Transformation*);
