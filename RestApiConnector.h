@@ -6,6 +6,7 @@
 
 class RestApiConnector : public Connector {
 public:
+    RestApiConnector(string source) : Connector(source) {}
     vector<string> extract();
 };
 

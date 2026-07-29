@@ -5,6 +5,7 @@
 
 class PostgresConnector : public Connector {
 public:
+    PostgresConnector(string source) : Connector(source) {}
     vector<string> extract();
 };
 
