@@ -13,7 +13,7 @@ public:
     Connector(string);
     string getSource();
     virtual vector<string> extract();
-    ~Connector();
+    virtual ~Connector();
 };
 
 #endif
