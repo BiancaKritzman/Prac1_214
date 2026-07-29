@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 
+
 class ConnectorFactory;
 class Transformation;
 class RunCheckpoint;
@@ -11,6 +12,7 @@ class RunCheckpoint;
 class Pipeline {
 
     public:
+        friend class Transformation;
         Pipeline(ConnectorFactory*);
         void run();
         void addStep(Transformation*);

@@ -19,14 +19,16 @@ class Transformation {
 
 class DeduplicateStep : public Transformation {
     public:
+        // DeduplicateStep(std::string);
         Transformation* clone() override;
-        std::vector<std::string> apply();
+        std::vector<std::string> apply(std::vector<std::string>) override;
 };
 
 class AggregateByRegionStep : public Transformation {
     public:
+        // AggregateByRegionStep(std::string);
         Transformation* clone() override;
-        std::vector<std::string> apply();
+        std::vector<std::string> apply(std::vector<std::string>) override;
 };
 
 

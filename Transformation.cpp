@@ -2,8 +2,6 @@
 #include "Transformation.h"
 #include "Pipeline.h"
 
-//make a friends?
-
 Transformation::Transformation(std::string name) : name(name) {};
 
 //if name is from DeduplicateStep = dedup
@@ -13,7 +11,7 @@ std::string Transformation::getName(){
     return name;
 }
 
-std::vector<std::string> DeduplicateStep::apply() {
+std::vector<std::string> DeduplicateStep::apply(std::vector<std::string> records) { //correct?
   //remove consective duplicates from records - keep the first of each input
   std::vector<std::string> deduplicatedRecords;
   for (size_t i = 0; i < records.size(); ++i) {
@@ -25,8 +23,24 @@ std::vector<std::string> DeduplicateStep::apply() {
 }
 
 Transformation* DeduplicateStep::clone() {
-    return new DeduplicateStep(*this);
+
+  name = "dedup"; //not sure
+  
+  return new DeduplicateStep(*this);
 }
+
+std::vector<std::string> AggregateByRegionStep::apply(std::vector<std::string> records) { //correct?
+  
+  std::string element = "COUNT=" + records.size();
+}
+
+Transformation* AggregateByRegionStep::clone() {
+
+  name = "aggregate"; //not sure
+  
+  return new AggregateByRegionStep(*this);
+}
+
 
 
 
