@@ -1,14 +1,16 @@
 CXX=g++
 CFLAGS=-I. -Wall
 TARGET=TestOrganism
-OBJS= Pipeline.o Transformation.o TransformationRegistry.o  
+OBJS= Pipeline.o Transformation.o TransformationRegistry.o \
+      Connector.o PostgresConnector.o RestApiConnector.o CsvConnector.o \
+      ConnectorFactory.o PostgresFactory.o RestApiFactory.o CsvFactory.o \
+      RunCheckpoint.o CheckpointManager.o
 
 all: $(OBJS)
 	$(CXX) $(CFLAGS) $(OBJS) -o $(TARGET)
-    
+
 %.o: %.cpp
 	$(CXX) $(CFLAGS) -c $< -o $@
-    
+
 clean:
 	rm -f $(TARGET) $(OBJS)
-    
