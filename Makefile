@@ -4,7 +4,7 @@ TARGET=TestOrganism
 OBJS= Pipeline.o Transformation.o TransformationRegistry.o \
       Connector.o PostgresConnector.o RestApiConnector.o CsvConnector.o \
       ConnectorFactory.o PostgresFactory.o RestApiFactory.o CsvFactory.o \
-      RunCheckpoint.o CheckpointManager.o
+      RunCheckpoint.o CheckpointManager.o main.o
 
 all: $(OBJS)
 	$(CXX) $(CFLAGS) $(OBJS) -o $(TARGET)
