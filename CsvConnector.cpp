@@ -1,7 +1,6 @@
 #include "CsvConnector.h"
 
-CsvConnector::CsvConnector(string source) : Connector(source) {
-    source = "csv";
+CsvConnector::CsvConnector() : Connector("csv") {
 }
 
 vector<string> CsvConnector::extract() {

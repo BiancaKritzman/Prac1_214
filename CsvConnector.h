@@ -5,7 +5,7 @@
 
 class CsvConnector : public Connector {
 public:
-    CsvConnector(string source) : Connector(source) {}
+    CsvConnector();
     vector<string> extract();
 };
 

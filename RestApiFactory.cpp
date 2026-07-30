@@ -1,5 +1,9 @@
-#include "RestApiConnector.h"
+#include "RestApiFactory.h"
 
-vector<string> RestApiConnector::extract() {
-    return {"API:44","API:45","API:45"};
+Connector* RestApiFactory::createConnector(){
+    return new RestApiConnector();
+}#include "RestApiFactory.h"
+
+Connector* RestApiFactory::createConnector(){
+    return new RestApiConnector();
 }

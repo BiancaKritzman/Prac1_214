@@ -1,7 +1,6 @@
 #include "PostgresConnector.h"
 
-PostgresConnector::PostgresConnector(string source) : Connector(source) {
-    source = "postgres";
+PostgresConnector::PostgresConnector() : Connector("postgres") {
 }
 
 vector<string> PostgresConnector::extract() {
