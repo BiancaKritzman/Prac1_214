@@ -1,4 +1,4 @@
-CXX=g++
+CXX=g++ -std=c++11
 CFLAGS=-I. -Wall
 TARGET=TestOrganism
 OBJS= Pipeline.o Transformation.o TransformationRegistry.o \
