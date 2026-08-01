@@ -36,12 +36,14 @@ class Pipeline {
 
 class BatchPipeline : public Pipeline {
     protected:
+        BatchPipeline(ConnectorFactory* factory) : Pipeline(factory) {}
         void extract() override;
         void load() override;
 };
 
 class StreamingPipeline : public Pipeline {
     protected:
+        StreamingPipeline(ConnectorFactory* factory) : Pipeline(factory) {}
         void extract() override;
         void load() override;
 };
