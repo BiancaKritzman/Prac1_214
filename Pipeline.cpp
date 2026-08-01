@@ -24,7 +24,7 @@ void Pipeline::connect() {
     //obtain connector from factory
     Connector* connector = factory->createConnector();
     
-    std::cout << "Connecting to" << connector->getSource() << "\n" << std::endl;
+    std::cout << "Connecting to " << connector->getSource() << "\n" << std::endl;
 
     stage = 1;
 
@@ -55,7 +55,7 @@ void BatchPipeline::extract(){
     
     Connector* connector = factory->createConnector();
     records = connector->extract();
-    std::cout << "Batch extract: " << records.size() << "records \n" << std::endl;
+    std::cout << "Batch extract: " << records.size() << " records \n" << std::endl;
     stage = 2;
     delete connector;
 
@@ -63,7 +63,7 @@ void BatchPipeline::extract(){
 
 void BatchPipeline::load() {
 
-    std::cout << "Batch load: " << records.size() << "records written \n" << std::endl;
+    std::cout << "Batch load: " << records.size() << " records written \n" << std::endl;
 
     stage = 4;
 
@@ -74,7 +74,7 @@ void StreamingPipeline::extract() {
     Connector* connector = factory->createConnector();
     records = connector->extract();
 
-    std::cout << "Streaming extract: " << records.size() << "records \n" << std::endl;
+    std::cout << "Streaming extract: " << records.size() << " records \n" << std::endl;
 
     stage = 2;
 
@@ -85,7 +85,7 @@ void StreamingPipeline::extract() {
 
 void StreamingPipeline::load() {
     
-    std::cout << "Streaming load: " << records.size() << "records streamed \n" << std::endl;
+    std::cout << "Streaming load: " << records.size() << " records streamed \n" << std::endl;
 
     stage = 4;
 }
