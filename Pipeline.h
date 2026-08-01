@@ -15,12 +15,10 @@ class Pipeline {
         Pipeline(ConnectorFactory*);
         void run();
         void addStep(Transformation*);
-        RunCheckpoint* createCheckpoint();
-        void restore(RunCheckpoint*);
         virtual ~Pipeline();
         //memento functions
-        RunCheckpoint* createCheckpoint();
-        void restore(RunCheckpoint*);
+        virtual RunCheckpoint* createCheckpoint();
+        virtual void restore(RunCheckpoint*);
     protected:
         void connect();
         virtual void extract() = 0;
@@ -35,17 +33,22 @@ class Pipeline {
 };
 
 class BatchPipeline : public Pipeline {
-    protected:
+    public:
         BatchPipeline(ConnectorFactory* factory) : Pipeline(factory) {}
+    protected:
         void extract() override;
         void load() override;
 };
 
 class StreamingPipeline : public Pipeline {
-    protected:
+    public:
         StreamingPipeline(ConnectorFactory* factory) : Pipeline(factory) {}
+
+    protected:
         void extract() override;
         void load() override;
+        RunCheckpoint* createCheckpoint() override;
+        void restore(RunCheckpoint*) override;
 };
 
 

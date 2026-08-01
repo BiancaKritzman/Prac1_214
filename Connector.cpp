@@ -8,3 +8,5 @@ Connector::Connector(string source) : source(source) {}
 string Connector::getSource(){
     return source;
 }
+
+Connector::~Connector(){}

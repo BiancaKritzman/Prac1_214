@@ -6,7 +6,7 @@
 class ConnectorFactory {
 public:
     virtual Connector* createConnector() = 0;
-    ~ConnectorFactory();
+    virtual ~ConnectorFactory();
 };
 
 #endif

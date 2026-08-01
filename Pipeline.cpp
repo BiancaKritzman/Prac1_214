@@ -5,6 +5,8 @@
 #include "Transformation.h"
 
 Pipeline::Pipeline(ConnectorFactory* factory) : factory(factory), stage(0) {};
+RunCheckpoint* Pipeline::createCheckpoint() { return nullptr; }
+void Pipeline::restore(RunCheckpoint*) {}
 
 void Pipeline::addStep(Transformation* t) {
     steps.push_back(t); 
@@ -40,28 +42,21 @@ void Pipeline::transform() {
     stage = 3;
 }
 
-RunCheckpoint* Pipeline::createCheckpoint() {}
-
-void Pipeline::restore(RunCheckpoint*) {}
 
 Pipeline::~Pipeline() {
     delete factory;
 
-    for(int i = 0; i < steps.size(); i++) {
+    for(size_t i = 0; i < steps.size(); i++) {
         delete steps[i];
     }
 }
 
 void BatchPipeline::extract(){
     
-    Connector* connector;
-
-
+    Connector* connector = factory->createConnector();
+    records = connector->extract();
     std::cout << "Batch extract: " << records.size() << "records \n" << std::endl;
-
     stage = 2;
-
-    //clean up (delete)
     delete connector;
 
 }
@@ -76,8 +71,8 @@ void BatchPipeline::load() {
 
 void StreamingPipeline::extract() {
 
-    Connector* connector;
-
+    Connector* connector = factory->createConnector();
+    records = connector->extract();
 
     std::cout << "Streaming extract: " << records.size() << "records \n" << std::endl;
 

@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <string>
+#include "RunCheckpoint.h"
 class RunCheckpoint;
 
 class CheckpointManager{
