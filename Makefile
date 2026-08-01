@@ -1,6 +1,6 @@
 CXX=g++ -std=c++11
 CFLAGS=-I. -Wall
-TARGET=TestOrganism
+TARGET=engine
 OBJS= Pipeline.o Transformation.o TransformationRegistry.o \
       Connector.o PostgresConnector.o RestApiConnector.o CsvConnector.o \
       ConnectorFactory.o PostgresFactory.o RestApiFactory.o CsvFactory.o \

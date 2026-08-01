@@ -12,7 +12,7 @@ protected:
 public:
     Connector(string);
     string getSource();
-    virtual vector<string> extract();
+    virtual vector<string> extract() = 0;
     virtual ~Connector();
 };
 
