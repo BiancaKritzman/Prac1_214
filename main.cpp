@@ -9,6 +9,7 @@
 #include "CheckpointManager.h"
 #include "RunCheckpoint.h"
 #include "StreamingPipeline.h"
+#include "CsvFactory.h"
 
 
 int main() {
@@ -63,4 +64,11 @@ int main() {
     delete restored;
     delete cp2;
 
+
+    //factory test
+    StreamingPipeline* csvPipeline = new StreamingPipeline(new CsvFactory());
+    csvPipeline->run();
+    delete csvPipeline;
+
+    return 0;
 }
