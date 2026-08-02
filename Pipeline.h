@@ -32,24 +32,7 @@ class Pipeline {
 
 };
 
-class BatchPipeline : public Pipeline {
-    public:
-        BatchPipeline(ConnectorFactory* factory) : Pipeline(factory) {}
-    protected:
-        void extract() override;
-        void load() override;
-};
 
-class StreamingPipeline : public Pipeline {
-    public:
-        StreamingPipeline(ConnectorFactory* factory) : Pipeline(factory) {}
-
-    protected:
-        void extract() override;
-        void load() override;
-        RunCheckpoint* createCheckpoint() override;
-        void restore(RunCheckpoint*) override;
-};
 
 
 #endif // PIPELINE_H
