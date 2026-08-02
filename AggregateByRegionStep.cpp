@@ -9,7 +9,7 @@ std::vector<std::string> AggregateByRegionStep::apply(std::vector<std::string> r
 
   std::vector<std::string> aggRecords;
   
-  aggRecords.push_back("COUNT=" + records.size());
+  aggRecords.push_back("COUNT=" + std::to_string(records.size()));
 
   return aggRecords;
 }
