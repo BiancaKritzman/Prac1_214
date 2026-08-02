@@ -17,19 +17,7 @@ class Transformation {
 
 };
 
-class DeduplicateStep : public Transformation {
-    public:
-        DeduplicateStep():Transformation("dedup"){};
-        Transformation* clone() override;
-        std::vector<std::string> apply(std::vector<std::string>) override;
-};
 
-class AggregateByRegionStep : public Transformation {
-    public:
-        AggregateByRegionStep():Transformation("aggregate"){};
-        Transformation* clone() override;
-        std::vector<std::string> apply(std::vector<std::string>) override;
-};
 
 
 #endif // TRANSFORMATION_H

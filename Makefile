@@ -4,6 +4,8 @@ TARGET=engine
 OBJS= Pipeline.o Transformation.o TransformationRegistry.o \
       Connector.o PostgresConnector.o RestApiConnector.o CsvConnector.o \
       ConnectorFactory.o PostgresFactory.o RestApiFactory.o CsvFactory.o \
+      BatchPipeline.o StreamingPipeline.o \
+	  DeduplicateStep.o AggregateByRegionStep.o \
       RunCheckpoint.o CheckpointManager.o main.o
 
 all: $(OBJS)
