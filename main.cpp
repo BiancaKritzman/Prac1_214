@@ -5,8 +5,11 @@
 #include "Pipeline.h"
 #include "BatchPipeline.h"
 #include "PostgresFactory.h"
+#include "RestApiFactory.h"
 #include "CheckpointManager.h"
 #include "RunCheckpoint.h"
+#include "StreamingPipeline.h"
+
 
 int main() {
 
@@ -36,4 +39,28 @@ int main() {
     delete cp;
 
     return 0;
+
+
+
+    //Testing a second pipeline
+    StreamingPipeline* streamPipeline = new StreamingPipeline(new RestApiFactory());
+    streamPipeline->addStep(registry.create("dedup"));
+    streamPipeline->addStep(registry.create("aggregate"));
+
+    CheckpointManager* manager2 = new CheckpointManager();
+
+    streamPipeline->run();
+    RunCheckpoint* cp2 = streamPipeline->createCheckpoint();
+    manager2->save(cp2);
+
+    RunCheckpoint* restored = manager2->undo(); //to test undo
+    if (restored != nullptr) {
+        streamPipeline->restore(restored); //test restore
+    }
+
+    delete streamPipeline;
+    delete manager2;
+    delete restored;
+    delete cp2;
+
 }
