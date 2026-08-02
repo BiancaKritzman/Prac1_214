@@ -15,7 +15,8 @@ RunCheckpoint* CheckpointManager::undo(){
     }
 }
 CheckpointManager::~CheckpointManager(){
-    for(size_t i = 0; i < history.size(); i++){
-        delete history[i];
-    }
+    //for(size_t i = 0; i < history.size(); i++){
+    //    delete history[i];
+    //}
+    history.clear();
 }

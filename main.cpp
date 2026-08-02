@@ -30,6 +30,7 @@ int main() {
     //(6) deletes
     delete pipeline;
     delete manager;
+    delete cp;
 
     return 0;
 }
