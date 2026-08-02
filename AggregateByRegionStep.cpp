@@ -3,8 +3,6 @@
 #include "Pipeline.h"
 #include "AggregateByRegionStep.h"
 
-
-
 std::vector<std::string> AggregateByRegionStep::apply(std::vector<std::string> records) { 
 
   std::vector<std::string> aggRecords;
